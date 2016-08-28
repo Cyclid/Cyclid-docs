@@ -9,6 +9,7 @@ Welcome to Cyclid's documentation!
 Contents:
 
 * :ref:`user-docs`
+* :ref:`job-docs`
 * :ref:`developer-docs`
 
 .. _user-docs:
@@ -22,6 +23,15 @@ Contents:
    configuration_file
    vagrant
    cli
+
+
+.. _job-docs:
+
+.. toctree::
+   :maxdepth: 3
+   :caption: Writing Jobs
+
+   jobs/stages_jobs
 
 
 .. _developer-docs:
