@@ -8,11 +8,25 @@ Welcome to Cyclid's documentation!
 
 Contents:
 
+* :ref:`user-docs`
+* :ref:`developer-docs`
+
+.. _user-docs:
+
 .. toctree::
    :maxdepth: 3
+   :caption: User Documentation
 
    server
    manage
    configuration_file
    vagrant
    cli
+
+.. _developer-docs:
+
+.. toctree::
+   :maxdepth: 3
+   :caption: Developer Documentation
+
+   plugins/index
