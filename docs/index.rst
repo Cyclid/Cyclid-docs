@@ -42,3 +42,5 @@ Contents:
 
    plugins/index
    security/authentication
+   internal/jobs_jobrecords_logbuffers_notifiers_callbacks
+   internal/stages_steps_actions_jobs
