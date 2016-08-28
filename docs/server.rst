@@ -103,20 +103,14 @@ configuration options to use:
       log: stderr
       dispatcher: local
       builder: mist
-    manage:
-      api:
-        server: http://localhost:8361
-        client: http://<hostname>:8361
 
 Replace the MySQL username, password & hostname with ones suitable for
 your database server. The user should have create & update privileges.
 The database should already exist on the server (I.e.
-``create database <database>;`` should already have been run). Replace
-the API server hostname with the name of the server, which should be
-resolvable by the client. See the complete `documentation for the
-configuration
-file <http://wp-lb.cyclid.io/document/configuration-file/>`__ for more
-information.
+``create database <database>;`` should already have been run).
+
+See the complete :ref:`documentation for the configuration file
+<configuration-file>` for more information.
 
 Create the Cyclid database
 --------------------------

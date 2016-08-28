@@ -13,5 +13,6 @@ Contents:
 
    server
    manage
+   configuration_file
    vagrant
    cli

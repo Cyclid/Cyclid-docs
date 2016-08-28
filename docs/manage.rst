@@ -69,6 +69,30 @@ Install Cyclid
 Rubygems will install the Ruby dependencies for Cyclid automatically,
 which may include building native extensions for some Gems.
 
+Create the Cyclid configuration file
+------------------------------------
+
+::
+
+    $ sudo mkdir /etc/cyclid
+    $ sudo vim /etc/cyclid/config
+
+The configuration file specifies the API connection details and a few
+configuration options to use:
+
+::
+
+    manage:
+      api:
+        server: http://localhost:8361
+        client: http://<hostname>:8361
+
+Replace the API server hostname with the name of the API server, which
+should be reachable by the client.
+
+See the complete :ref:`documentation for the configuration file
+<configuration-file>` for more information.
+
 Configuring Unicorn & Nginx
 ===========================
 
@@ -202,6 +226,7 @@ installation. Restart Nginx Enable the Nginx configuration & restart
 Nginx:
 
 ::
+
     $ sudo rm /etc/nginx/sites-enabled/default
     $ sudo ln -s /etc/nginx/sites-available/cyclid-ui /etc/nginx/sites-enabled/cyclid-ui
     $ sudo service nginx restart
