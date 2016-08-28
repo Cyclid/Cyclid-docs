@@ -11,12 +11,12 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
+   cli
 
 
 Indices and tables
 ==================
 
 * :ref:`genindex`
-* :ref:`modindex`
 * :ref:`search`
 
