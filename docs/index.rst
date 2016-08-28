@@ -9,14 +9,8 @@ Welcome to Cyclid's documentation!
 Contents:
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
 
+   server
+   manage
    cli
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`search`
-

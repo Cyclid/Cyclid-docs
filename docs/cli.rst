@@ -1,23 +1,25 @@
-=============
+#############
 Cyclid client
-=============
+#############
 
 .. NOTE::
   The client is still in development. Some features are missing entirely and
   the interface is liable to change at any moment.
 
+************
 Installation
-=============
+************
 
 ::
 
     $ gem install cyclid-client -s http://rubygems.cyclid.io
 
+*************
 Configuration
-=============
+*************
 
 Configuration file format
-~~~~~~~~~~~~~~~~~~~~~~~~~
+=========================
 
 The configuration file is a simple YAML file with only five options.
 
@@ -36,7 +38,7 @@ The configuration file is a simple YAML file with only five options.
 +----------------+-------------+----------------------------------------------------------+
 
 Example
-^^^^^^^
+-------
 
 ::
 
@@ -46,7 +48,7 @@ Example
     secret: b1fc42ef648b4407f30dc77f328dbb86b03121fb15aba256497ef97ec9a3cd02
 
 Switching between configurations
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+================================
 
 The client uses configuration files under ``$HOME/.cyclid`` You can have
 multiple configuration files and switch between the with the
@@ -67,14 +69,15 @@ To find the list of available configurations, use the
 ``organization list`` command.
 
 Specifying a configuration file
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+===============================
 
 You can use the ``--config`` or ``-c`` option to specify the path to a
 configuration file to use instead of the current configuration that has
 been set with the ``organization use`` command.
 
+********
 Commands
-========
+********
 
 Cyclid commands are grouped under the following categories:
 
@@ -95,10 +98,10 @@ Cyclid commands are grouped under the following categories:
 +----------------+------------------------------------+
 
 User commands
-~~~~~~~~~~~~~
+=============
 
 user show
-^^^^^^^^^
+---------
 
 Display your current user details.
 
@@ -111,7 +114,7 @@ Display your current user details.
         example
 
 user passwd
-^^^^^^^^^^^
+-----------
 
 Change your current users password. The user password is only used for
 HTTP Basic authentication.
@@ -123,7 +126,7 @@ HTTP Basic authentication.
     Confirm password: <re-enter new password>
 
 user modify
-^^^^^^^^^^^
+-----------
 
 Change your current users email address, HMAC secret and/or password.
 You can pass the following options:
@@ -155,10 +158,10 @@ any other Cyclid commands.
     $ cyclid user modify --secret b072d8b51cec2755145c401b9249a60ebd89b4704eeebc5b6805ba682d7fac53
 
 Organization commands
-~~~~~~~~~~~~~~~~~~~~~
+=====================
 
 organization list
-^^^^^^^^^^^^^^^^^
+-----------------
 
 Lists all of the available organization configurations on your local
 machine.
@@ -176,7 +179,7 @@ machine.
         Username: bob
 
 organization show
-^^^^^^^^^^^^^^^^^
+-----------------
 
 Display the details of your currently selected organization, including
 the list of organization members and its public key.
@@ -202,7 +205,7 @@ the list of organization members and its public key.
         leslie
 
 organization use
-^^^^^^^^^^^^^^^^
+----------------
 
 Select an organization configuration to use by default. Pass a name of
 an organization from ``organization list`` to select it as your current
@@ -218,7 +221,7 @@ the currently selected organization is shown.
     $ cyclid organization use admins
 
 organization modify
-^^^^^^^^^^^^^^^^^^^
+-------------------
 
 Modify the current organization. This command can only be used by
 organization admins.
@@ -237,13 +240,13 @@ You can pass the following options:
     $ cyclid organization modify --email lucy@example.com
 
 organization member
-^^^^^^^^^^^^^^^^^^^
+-------------------
 
 The ``organization member`` command has a series of sub-commands which
 are used to manage users which belong to the organization.
 
 organization member list
-''''''''''''''''''''''''
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 List all of the users who are members of the current organization.
 
@@ -256,7 +259,7 @@ List all of the users who are members of the current organization.
     leslie
 
 organization member show
-''''''''''''''''''''''''
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 Display the user details of an organization member, including the user
 permissions.
@@ -272,7 +275,7 @@ permissions.
         Read: true
 
 organization member add
-'''''''''''''''''''''''
+^^^^^^^^^^^^^^^^^^^^^^^
 
 Add user(s) to the current organization. You must pass at least one
 username.
@@ -289,7 +292,7 @@ permissions after they have been added to the organization.
     $ cyclid organization member add bob lucy
 
 organization member permission
-''''''''''''''''''''''''''''''
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Modify a users permissions for the organization. You must pass the
 username and the level of access you want the user to have. This can be
@@ -315,7 +318,7 @@ actually remove a user from the organization.
     $ cyclid organization member permission lucy admin
 
 organization member remove
-''''''''''''''''''''''''''
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Remove user(s) from the current organization. You must pass at least one
 username. By default the ``organization member remove`` command will ask
@@ -334,13 +337,13 @@ you to confirm the removal first; you can over-ride this with the
     $ cyclid organization member remove bob --force
 
 organization config
-^^^^^^^^^^^^^^^^^^^
+-------------------
 
 The ``organization config`` command has a series of sub-commands which
 are used to get and set plugin configurations for your organization.
 
 organization config show
-''''''''''''''''''''''''
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 Show the current organization specific configuration for a plugin. You
 must specify both the plugin type, and the plugin name.
@@ -354,7 +357,7 @@ must specify both the plugin type, and the plugin name.
     Github HMAC signing secret: Not set
 
 organization config edit
-''''''''''''''''''''''''
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 Modify the organization specific configuration for a plugin. You must
 specify both the plugin type, and the plugin name.
@@ -368,10 +371,10 @@ to be set to the path of a valid text editor that it can start.
     # The Github plugin configuration is loaded in your text editor
 
 Job commands
-~~~~~~~~~~~~
+============
 
 job show
-^^^^^^^^
+--------
 
 Show the details of a job. You must pass a valid job ID.
 
@@ -386,7 +389,7 @@ Show the details of a job. You must pass a valid job ID.
     Status: Succeeded
 
 job status
-^^^^^^^^^^
+----------
 
 Show the status of a job. You must pass a valid job ID.
 
@@ -396,7 +399,7 @@ Show the status of a job. You must pass a valid job ID.
     Status: Succeeded
 
 job log
-^^^^^^^
+-------
 
 Show the log from a job. You must pass a valid job ID.
 
@@ -412,7 +415,7 @@ Show the log from a job. You must pass a valid job ID.
     ...
 
 job submit
-^^^^^^^^^^
+----------
 
 Submit a Cyclid job file to be run. The ``job submit`` command expects
 to be passed a path to a valid Cyclid job file in either JSON or YAML
@@ -440,10 +443,10 @@ You can then check the status of the job with the ``job status``,
     Job: 8
 
 Stage commands
-~~~~~~~~~~~~~~
+==============
 
 stage list
-^^^^^^^^^^
+----------
 
 List all of the stages, and each version of each stage, that are defined
 for the organization.
@@ -459,7 +462,7 @@ for the organization.
     failure v1.0.0
 
 stage show
-^^^^^^^^^^
+----------
 
 Show the details of a stage.
 
@@ -486,7 +489,7 @@ Show the details of a stage.
             Args: ["'Hello", "universe'"]
 
 stage create
-^^^^^^^^^^^^
+------------
 
 Create a new stage, or a new version of a stage, from a stage definition
 in a file. The ``stage create`` command expects to be passed a path to a
@@ -509,7 +512,7 @@ options to over-ride the format detection.
     $ cyclid stage create stage.yml
 
 stage edit
-^^^^^^^^^^
+----------
 
 Edit a stage definition that exists on the server. Note that individual
 versions of a stage are immutable; once a version of a stage has been
@@ -528,10 +531,10 @@ to be set to the path of a valid text editor that it can start.
     # The 'example' stage definition is loaded in your text editor
 
 Secret commands
-~~~~~~~~~~~~~~~
+===============
 
 secret encrypt
-^^^^^^^^^^^^^^
+--------------
 
 Encrypts a string with the organizations public key. You can then add
 the encrypted secret to the ``secrets`` section of a Cyclid job
@@ -544,7 +547,7 @@ definition.
     Secret: uzegcZfXPuj4KNo+EpP928cgPW37gMDhdKw9OoCE0YXKWWtJ+kJIHzLyOGrF7p6dDJ3cWNZhEDADINJqsYMoaSbSAdT5Gx+lAo7BWOP+y20j9ECLyktfmhBi7mdxg66URcEe/VnD9JN9OObwGTaycb1XryZWeU/Hfr45Y/HObUnFhE+W+IHbAswMBO9bs3DogF672DFXkTtt+b0XW6ttyHGIqUqxoo8zFBEaDQlxa5oaW3iXSmcA+rrfolPO6gl9wI4PxH2kbxDeLoSo4Jolle3Oqv5SwcNOUChMHWsdJwrLDKvz995SvPJdVNkfsIAz1dDw8NYo0SroxIdC/3XzBQ==
 
 Admin commands
-~~~~~~~~~~~~~~
+==============
 
 Admin commands are used for server wide configuration, and are only
 available to server admins I.e. users who are members of the 'admins'
@@ -559,6 +562,11 @@ Admin commands are grouped under the following categories:
 +----------------+------------------------+
 | user           | Manage users           |
 +----------------+------------------------+
+
+Admin organization commands
+---------------------------
+The ``admin organization`` command has a series of sub-commands which
+are used to manage organizations.
 
 admin organization list
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -663,6 +671,12 @@ and this command will always fail.
 
     # Delete the 'initech' organization
     $ cyclid admin organization delete initech
+
+Admin user commands
+-------------------
+
+The ``admin user`` command has a series of sub-commands which
+are used to manage users.
 
 admin user list
 ^^^^^^^^^^^^^^^
