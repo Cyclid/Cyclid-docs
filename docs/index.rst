@@ -31,7 +31,7 @@ Contents:
    :maxdepth: 3
    :caption: Writing Jobs
 
-   jobs/stages_jobs
+   jobs/index
 
 
 .. _developer-docs:
@@ -41,6 +41,5 @@ Contents:
    :caption: Developer Documentation
 
    plugins/index
-   security/authentication
-   internal/jobs_jobrecords_logbuffers_notifiers_callbacks
-   internal/stages_steps_actions_jobs
+   security/index
+   internal/index
