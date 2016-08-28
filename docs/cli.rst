@@ -75,6 +75,8 @@ You can use the ``--config`` or ``-c`` option to specify the path to a
 configuration file to use instead of the current configuration that has
 been set with the ``organization use`` command.
 
+.. _client-commands:
+
 ********
 Commands
 ********

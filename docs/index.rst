@@ -13,4 +13,5 @@ Contents:
 
    server
    manage
+   vagrant
    cli

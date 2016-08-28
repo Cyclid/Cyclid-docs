@@ -8,8 +8,7 @@ Installation
 
 These instructions cover installing & configuring your own Cyclid UI
 server. If you don't want to go through the trouble of doing that, you
-might want to try out the `Cyclid Vagrant
-instance <http://wp-lb.cyclid.io/document/vagrant/>`__ instead.
+might want to try out the :ref:`Cyclid Vagrant instance <vagrant>` instead.
 
 Prerequisites
 =============
