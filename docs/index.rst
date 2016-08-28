@@ -23,6 +23,7 @@ Contents:
    vagrant
    cli
 
+
 .. _developer-docs:
 
 .. toctree::
@@ -30,3 +31,4 @@ Contents:
    :caption: Developer Documentation
 
    plugins/index
+   security/authentication
