@@ -62,6 +62,4 @@ Cyclid UI at http://localhost:8080/login. Log in using the username
 
 |Cyclid|
 
-.. |Cyclid| image:: Cyclid-Vagrant-01-small.png
-   :class: alignnone size-full wp-image-411
-
+.. |Cyclid| image:: ../images/Cyclid-Vagrant-01-small.png
