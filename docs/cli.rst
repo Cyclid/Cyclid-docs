@@ -1,5 +1,5 @@
 #############
-Cyclid client
+Cyclid Client
 #############
 
 .. NOTE::
