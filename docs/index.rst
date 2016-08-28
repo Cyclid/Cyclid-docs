@@ -32,6 +32,7 @@ Contents:
    :caption: Writing Jobs
 
    jobs/index
+   plugins/index
 
 
 .. _developer-docs:
@@ -40,6 +41,5 @@ Contents:
    :maxdepth: 3
    :caption: Developer Documentation
 
-   plugins/index
    security/index
    internal/index
