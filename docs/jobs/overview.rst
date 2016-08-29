@@ -7,13 +7,18 @@ or `YAML <http://yaml.org/>`_ format.
 
 A Cyclid job defines:
 
-1. Some information about the :ref:`Job <metainfo>` itself, including the name & version.
-2. The :ref:`Environment` to use to run the job. This includes the operating system
-   type and version, and any extra packages to be installed.
+1. Some information about the :ref:`Job <metainfo>` itself, including the namei
+   & version.
+2. The :ref:`Environment` to use to run the job. This includes the operating
+   system type and version, and any extra packages to be installed.
 3. The :ref:`Stages` to run, and the order to run them.
 4. Any additional :ref:`Stages` that are specific to this job.
 5. Additional information such as :ref:`Sources` to be checked out or encrypted
    :ref:`Secrets` that can be used when running the job.
+
+Every time a job is run Cyclid provides a "context", which is information about
+the running job. The :ref:`job context <context>` data can be used in the job
+definition as variables.
 
 Normally the job file is placed in the root of your project, with the name
 ``.cyclid.json`` for JSON formatted jobs, or ``.cyclid.yml`` (``cyclid.yaml``)
@@ -261,3 +266,65 @@ You can view the organizations public key with the
 secret, you can add it to the Secrets definition in your job.
 
 See :ref:`Secrets <secrets-info>` for details on creating and using secrets.
+
+.. _context:
+
+************
+Job contexts
+************
+
+Every time a job is run, Cyclid provides a context which contains various
+pieces of information that can be inserted into the job using variables, as
+the job runs.
+
+Some of the context information is generated automatically, but will also
+include any decrypted :ref:`Secrets` that are defined by the job.
+
+An example job context might look something like the following:
+
+.. highlight:: ruby
+.. code:: ruby
+
+  {
+    "job_id"=>309,
+    "job_name"=>"Cyclid",
+    "job_version"=>"1.0.0",
+    "organization"=>"admins",
+    "os"=>"ubuntu_trusty",
+    "distro"=>"ubuntu",
+    "release"=>"trusty",
+    "repos"=>[
+      {"url"=>"ppa:brightbox/ruby-ng"}
+    ],
+    "packages"=>[
+      "ruby2.3",
+      "ruby2.3-dev",
+      "build-essential",
+      "git",
+      "zlib1g-dev",
+      "libsqlite3-dev",
+      "mysql-client",
+      "libmysqlclient-dev"
+    ],
+    "server"=>"builder01",
+    "name"=>"mist-cd2cc1f51e353aa6ddd36946689b679c",
+    "host"=>"192.168.1.66",
+    "username"=>"build",
+    "password"=>nil,
+    "key"=>"~/.ssh/id_rsa_build",
+    "workspace"=>"/home/build"
+  }
+
+Some information may be more immediately useful to the running job than
+others, and other information may be available depending on which plugins are
+in use. The job context may also change as the job runs; hence the name!
+
+Data from the job context can be inserted into the job as variables inside of
+strings using the ``%{ }`` operator. For example ``"The build image is called
+%{name} and it is running %{distro} %{release}"`` would produce the canonical
+string ``"The build image is called mist-cd2cc1f51e353aa6ddd36946689b679c and
+it is running ubuntu trusty"``
+
+Context variables can be used pretty much anywhere where you would use a
+string with Sources, Stages or Steps (it doesn't make sense to use them in
+Environments or Secrets!)
