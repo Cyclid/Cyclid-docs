@@ -10,6 +10,7 @@ Contents:
 
 * :ref:`user-docs`
 * :ref:`job-docs`
+* :ref:`plugin-docs`
 * :ref:`developer-docs`
 
 .. _user-docs:
@@ -32,6 +33,14 @@ Contents:
    :caption: Writing Jobs
 
    jobs/index
+
+
+.. _plugin-docs:
+
+.. toctree::
+   :maxdepth: 3
+   :caption: Plugins
+
    plugins/index
 
 
