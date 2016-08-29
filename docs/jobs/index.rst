@@ -3,4 +3,8 @@ Contents:
 .. toctree::
    :maxdepth: 3
 
-   stages_jobs
+   overview
+   stages
+   environments
+   sources
+   secrets
