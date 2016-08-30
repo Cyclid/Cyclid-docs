@@ -199,7 +199,7 @@ Stages, and each Stage defines one or more Steps which perform actions.
 Stages can be defined in the job itself, or can be defined on the Cyclid
 server, where they can be referenced from and used by any job.
 
-See :ref:`Stages, Steps & Actions <stages-steps-actions>` to see how they
+See :ref:`Stages, Steps & Actions <stages-steps-actions-info>` to see how they
 relate to each other and how to use them to build your Cyclid job.
 
 .. _sequence:
@@ -211,8 +211,8 @@ The Sequence defines your Cyclid job pipeline. It lists the Stages to run, and
 the order to run them in. It can also tell Cyclid what to do when a Stage
 succeeds, or fails.
 
-See :ref:`Sequences` for more information on how to define the job pipeline in
-your Cyclid job.
+See :ref:`Sequences <sequence-info>` for more information on how to define the
+job pipeline in your Cyclid job.
 
 .. _environment:
 

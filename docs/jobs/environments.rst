@@ -49,8 +49,9 @@ operating system, to use when creating the build image, for example
 
 The Cyclid server will map the requested operating system to an image. The
 actual image used will depend on which Builder plugin is configured on the
-server. In addition, the server must have a :ref:`Provisioner <provisioners>`
-plugin that supports the requested operating system.
+server. In addition, the server must have a
+:ref:`Provisioner <provisioners-plugin>` plugin that supports the requested
+operating system.
 
 For example, if your Cyclid server is configured to use Amazon Web Services to
 provide build images and request an ``ubuntu_14_04`` image, the AWS Builder
@@ -70,5 +71,5 @@ For example, in :ref:`the example above <environment_example>` the Ubuntu
 provisioner allows you to define a list of additional Ubuntu PPA repositories,
 and a list of packages to install into the build image.
 
-See the documentation for :ref:`Provisioner plugins <provisioners>` for more
-information on which options are supported for each provisioner.
+See the documentation for :ref:`Provisioner plugins <provisioners-plugin>` for
+more information on which options are supported for each provisioner.

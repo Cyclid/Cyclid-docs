@@ -1,4 +1,4 @@
-.. _provisioners:
+.. _provisioners-plugin:
 
 ###########
 Provisoners

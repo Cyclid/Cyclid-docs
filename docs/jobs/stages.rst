@@ -1,4 +1,4 @@
-.. _stages-steps-actions:
+.. _stages-steps-actions-info:
 
 #######################
 Stages, Steps & Actions
@@ -10,10 +10,10 @@ building Stages with Steps of Actions, and then connecting those Stages
 together, you can create complex and powerful job pipelines.
 
 Once you've defined your Stages & Steps, see :ref:`the section on defining a
-sequence<sequence>` for more information on how to use them to create your job
+sequence <sequence>` for more information on how to use them to create your job
 pipeline.
 
-.. _steps:
+.. _steps-info:
 
 *****
 Steps
@@ -48,10 +48,11 @@ Name   Description
 action The action to take for the step
 ====== ====================================================
 
-See the documentation for :ref:`Action plugins <actions>` for more information
-on which Actions are available and what options are supported for each action.
+See the documentation for :ref:`Action plugins <actions-plugin>` for more
+information on which Actions are available and what options are supported for
+each action.
 
-.. _stages:
+.. _stages-info:
 
 ******
 Stages
@@ -157,4 +158,5 @@ of Steps you can define in a single Stage, but you should probably try to keep
 the number low and split large lists of Steps up into multiple Stages with
 fewer Steps in each Stage.
 
-See the section on :ref:`Steps` for more information on how to define Steps.
+See the section on :ref:`Steps <steps-info>` for more information on how to
+define Steps.

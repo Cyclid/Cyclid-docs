@@ -1,4 +1,4 @@
-.. _actions:
+.. _actions-plugin:
 
 #######
 Actions
