@@ -249,6 +249,89 @@ Email
 
 The Email plugin send an email notification. It supports the following options.
 
+message
+=======
+
+======= ==============================================================
+Name    Description
+======= ==============================================================
+message Email message body
+======= ==============================================================
+
+Specify the email message body.
+
+to
+==
+
+======= ==============================================================
+Name    Description
+======= ==============================================================
+to      Email recipiant address
+======= ==============================================================
+
+The email address to send the message to.
+
+
+Example
+-------
+
+.. code:: json
+
+  {
+    "action" : "email",
+    "message" : "This is an email from Cyclid",
+    "to" : "user@example.com"
+  }
+
+subject
+=======
+
+======= ==============================================================
+Name    Description
+======= ==============================================================
+subject Email message subject
+======= ==============================================================
+
+An optional subject. If no subject is specified the default of
+``Cyclid notification`` is used.
+
+Example
+-------
+
+.. code:: json
+
+  {
+    "action" : "email",
+    "subject" : "Example message",
+    "message" : "This is an email from Cyclid",
+    "to" : "user@example.com"
+  }
+
+color
+=====
+
+======= ==============================================================
+Name    Description
+======= ==============================================================
+color   Email body highlight color
+======= ==============================================================
+
+Email messages sent by Cyclid highlight the message subject; you can use the
+``color`` option to set this color for different classes of emails E.g. a
+failure message could set the color to red.
+
+Example
+-------
+
+.. code:: json
+
+  {
+    "action" : "email",
+    "color" : "red",
+    "message" : "This is an email from Cyclid",
+    "to" : "user@example.com"
+  }
+
 .. _slack-plugin:
 
 *****
@@ -257,3 +340,73 @@ Slack
 
 The Slack plugin send a Slack message notification. It supports the following
 options.
+
+subject
+=======
+
+======= ==============================================================
+Name    Description
+======= ==============================================================
+subject Slack message subject
+======= ==============================================================
+
+The subject of the Slack message.
+
+message
+=======
+
+======= ==============================================================
+Name    Description
+======= ==============================================================
+message Slack message body
+======= ==============================================================
+
+The message body text of the Slack message.
+
+color
+=====
+
+======= ==============================================================
+Name    Description
+======= ==============================================================
+color   Slack message highlight color
+======= ==============================================================
+
+You can use the ``color`` option to select the highlight color of the Slack
+message E.g. a failure notification can set the color to ``danger``. If no
+color is specified the default of ``good`` is used.
+
+Example
+-------
+
+Send a failure notification to the default Slack channel, with the color set
+to ``danger``:
+
+.. code:: json
+
+  {
+    "action": "slack",
+    "subject": "%{job_name} failed",
+    "message": "Job %{organization}/%{job_name} (job #%{job_id}) failed.",
+    "color": "danger"
+  }
+
+url
+===
+
+The Slack API URL. By default the Slack API URL is configured
+organization-wide, and this URL will be used when no URL is specified. However
+if you need to send a notification to a different Slack group, you can
+over-ride the default with the ``url`` option.
+
+Example
+-------
+
+.. code:: json
+
+  {
+    "action": "slack",
+    "url" : "https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX",
+    "subject": "%{job_name} succeeded",
+    "message": "Job %{organization}/%{job_name} (job #%{job_id}) completed successfully.",
+  }
