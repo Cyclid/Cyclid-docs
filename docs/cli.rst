@@ -180,6 +180,8 @@ machine.
         Organization: example
         Username: bob
 
+.. _org-show:
+
 organization show
 -----------------
 
@@ -416,6 +418,8 @@ Show the log from a job. You must pass a valid job ID.
     2016-04-21 16:41:47 +0100 : Running stage example v1.0.0
     ...
 
+.. _job-submit:
+
 job submit
 ----------
 
@@ -534,6 +538,8 @@ to be set to the path of a valid text editor that it can start.
 
 Secret commands
 ===============
+
+.. _secret-encrypt:
 
 secret encrypt
 --------------

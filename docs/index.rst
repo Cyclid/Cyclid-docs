@@ -10,6 +10,7 @@ Contents:
 
 * :ref:`user-docs`
 * :ref:`job-docs`
+* :ref:`plugin-docs`
 * :ref:`developer-docs`
 
 .. _user-docs:
@@ -31,8 +32,23 @@ Contents:
    :maxdepth: 3
    :caption: Writing Jobs
 
-   jobs/index
-   plugins/index
+   jobs/overview
+   jobs/stages
+   jobs/sequence
+   jobs/environments
+   jobs/sources
+   jobs/secrets
+
+
+.. _plugin-docs:
+
+.. toctree::
+   :maxdepth: 3
+   :caption: Plugins
+
+   plugins/actions
+   plugins/sources
+   plugins/provisioners
 
 
 .. _developer-docs:
@@ -41,5 +57,9 @@ Contents:
    :maxdepth: 3
    :caption: Developer Documentation
 
-   security/index
-   internal/index
+   security/authentication
+   internal/plugins
+   internal/api_plugins
+   internal/plugin_configs
+   internal/jobs_jobrecords_logbuffers_notifiers_callbacks
+   internal/stages_steps_actions_jobs
