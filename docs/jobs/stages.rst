@@ -9,6 +9,10 @@ Stages, and each Stage defines one or more Steps which perform Actions. By
 building Stages with Steps of Actions, and then connecting those Stages
 together, you can create complex and powerful job pipelines.
 
+Once you've defined your Stages & Steps, see :ref:`the section on defining a
+sequence<sequence>` for more information on how to use them to create your job
+pipeline.
+
 .. _steps:
 
 *****
@@ -133,7 +137,7 @@ name   The name of the stage
 Every Stage must have a name. This name should be unique. Names should not
 contain spaces and should ideally be descriptive and human readable.
 
-.. INFO::
+.. NOTE::
   If you define a Stage in your job definition with the same name as a Stage
   that has been defined on the server, the Stage in your job will take
   precedence. You should NOT rely on this behaviour: it may change at any time

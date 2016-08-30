@@ -5,6 +5,7 @@ Contents:
 
    overview
    stages
+   sequence
    environments
    sources
    secrets

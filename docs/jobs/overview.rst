@@ -11,7 +11,7 @@ A Cyclid job defines:
    & version.
 2. The :ref:`Environment` to use to run the job. This includes the operating
    system type and version, and any extra packages to be installed.
-3. The :ref:`Stages` to run, and the order to run them.
+3. The :ref:`Stages` to run, and the :ref:`Sequence` to run them in.
 4. Any additional :ref:`Stages` that are specific to this job.
 5. Additional information such as :ref:`Sources` to be checked out or encrypted
    :ref:`Secrets` that can be used when running the job.
@@ -201,6 +201,18 @@ server, where they can be referenced from and used by any job.
 
 See :ref:`Stages, Steps & Actions <stages-steps-actions>` to see how they
 relate to each other and how to use them to build your Cyclid job.
+
+.. _sequence:
+
+Sequence
+========
+
+The Sequence defines your Cyclid job pipeline. It lists the Stages to run, and
+the order to run them in. It can also tell Cyclid what to do when a Stage
+succeeds, or fails.
+
+See :ref:`Sequences` for more information on how to define the job pipeline in
+your Cyclid job.
 
 .. _environment:
 
