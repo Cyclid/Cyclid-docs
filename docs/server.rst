@@ -115,9 +115,10 @@ See the complete :ref:`documentation for the configuration file
 Create the Cyclid database
 --------------------------
 
-**Warning!** ``cyclid-db-init`` will drop any existing data from your
-database! Do NOT run ``cyclid-db-init`` if you have an existing
-database, as you WILL lose your data.
+.. WARNING::
+  ``cyclid-db-init`` will drop any existing data from your
+  database! Do NOT run ``cyclid-db-init`` if you have an existing
+  database, as you WILL lose your data.
 
 ::
     $ cyclid-db-init
