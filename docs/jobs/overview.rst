@@ -165,6 +165,17 @@ This job:
   it will run the Stage ``success``. The ``failure`` and ``success`` Stages
   must be created seperately on the server.
 
+****************
+Example projects
+****************
+
+We provide complete example projects that show how to use Cyclid with
+different languages and types of project. The come complete with a working
+Cyclid job file that you submit to Cyclid. They will work with a
+:ref:`Vagrant <vagrant>` instance if you just want to experiment.
+
+* `Example Ruby project <https://github.com/Liqwyd/example-ruby-project>`_
+
 ********
 Sections
 ********
