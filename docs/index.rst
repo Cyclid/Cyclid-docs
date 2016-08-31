@@ -6,7 +6,16 @@
 Welcome to Cyclid's documentation!
 ==================================
 
-Contents:
+This is the documentation for the `Cyclid CI <https://cyclid.io>`_ system. It
+covers everything from installing & configuring Cyclid, to writing Cyclid jobs
+and using the Cyclid command line client.
+
+This `documentation <https://github.com/Liqwyd/Cyclid-docs>`_ and
+`Cyclid itself <https://github.com/Liqwyd>`_ are Open Source; if you think this
+documentation could be improved, we welcome contributions.
+
+Contents
+========
 
 * :ref:`user-docs`
 * :ref:`job-docs`
