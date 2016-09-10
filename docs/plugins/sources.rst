@@ -31,7 +31,7 @@ http:// and https://
 
 Repositories are cloned into the working directory of the build image, with the
 default repository name E.g. if you clone the Cyclid repository from
-``https://github.com/Liqwyd/Cyclid`` the source will be located in
+``https://github.com/Cyclid/Cyclid`` the source will be located in
 ``%{workspace}/Cyclid``
 
 Example
@@ -43,7 +43,7 @@ Clone the Cyclid repository into the working directory:
 
   {
     "type" : "git",
-    "url" : "https://github.com/Liqwyd/Cyclid"
+    "url" : "https://github.com/Cyclid/Cyclid"
   }
 
 branch
@@ -69,7 +69,7 @@ Clone the Cyclid repository into the working directory and switch to the
 
   {
     "type" : "git",
-    "url" : "https://github.com/Liqwyd/Cyclid",
+    "url" : "https://github.com/Cyclid/Cyclid",
     "branch" : "example"
   }
 
@@ -100,6 +100,6 @@ has been provided as a secret named "github_token":
 
   {
     "type" : "git",
-    "url" : "https://github.com/Liqwyd/Cyclid",
+    "url" : "https://github.com/Cyclid/Cyclid",
     "token" : "%{github_token}"
   }

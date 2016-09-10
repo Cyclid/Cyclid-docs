@@ -174,7 +174,7 @@ different languages and types of project. The come complete with a working
 Cyclid job file that you submit to Cyclid. They will work with a
 :ref:`Vagrant <vagrant>` instance if you just want to experiment.
 
-* `Example Ruby project <https://github.com/Liqwyd/example-ruby-project>`_
+* `Example Ruby project <https://github.com/Cyclid/example-ruby-project>`_
 
 ********
 Sections
@@ -252,7 +252,7 @@ location of the source code for the project, but if you use the
 :ref:`job submit <job-submit>` command or your project requires other
 additional projects, you'll need to specify them under Sources.
 
-For example Cyclid itself can be cloned from https://github.com/Liqwyd/Cyclid.
+For example Cyclid itself can be cloned from https://github.com/Cyclid/Cyclid.
 It depends on both the Cyclid-core & Mist-client Gems. As Cyclid is being built
 from source, we also want to clone Cyclid-core & Mist from Github, too. So the
 Sources for the Cyclid job are:
@@ -264,11 +264,11 @@ Sources for the Cyclid job are:
   [
     {
       "type" : "git",
-      "url" : "https://github.com/Liqwyd/Cyclid-core.git"
+      "url" : "https://github.com/Cyclid/Cyclid-core.git"
     },
     {
       "type" : "git",
-      "url" : "https://github.com/Liqwyd/Mist.git"
+      "url" : "https://github.com/Cyclid/Mist.git"
     }
   ]
 
