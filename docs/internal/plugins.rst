@@ -61,10 +61,8 @@ runner to return information to Cyclid as it runs. The most simple
 Dispatcher is the 'local' plugin, which creates an asynchronous process
 which runs on the same host as the API.
 
-Dispatcher plugins also create Notifiers `that are used by the Job
-Runner to update the
-database <https://github.com/Liqwyd/Cyclid/wiki/Jobs,-JobRecords,-LogBuffers,-Notifiers,-Callbacks>`__
-as the Job runs.
+Dispatcher plugins also create Notifiers :ref:`that are used by the Job
+Runner to update the database <internal-jobs-jobrecords>` as the Job runs.
 
 Provisioner
 ===========

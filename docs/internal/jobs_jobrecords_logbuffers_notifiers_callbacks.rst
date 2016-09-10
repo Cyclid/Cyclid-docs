@@ -1,3 +1,5 @@
+.. _internal-jobs-jobrecords:
+
 ###################################################
 Jobs, JobRecords, LogBuffers, Notifiers & Callbacks
 ###################################################
