@@ -52,6 +52,28 @@ socket, you could configure Cyclid with
       username: cyclid
       database: cyclid
 
+Plugins
+=======
+
+Plugins can also have their own server configuration. Plugin configurations
+are placed under the ``plugin`` namespace, with each plugin having its own
+configuration object.
+
+For example, the SMTP Action plugin can be configured to use an SMTP relay to
+send emails. An example cofiguration may look something like:
+
+.. code:: yaml
+
+  server:
+    ...
+    plugins:
+      email:
+        server: smtp.example.com
+        port: 25      
+
+You should refer to the documentation for each plugin for the full list of
+configuration options it supports.
+
 ************************
 Cyclid UI server options
 ************************
