@@ -22,6 +22,8 @@ Prerequisites
    that is supported by ActiveRecord should work. I use MySQL so these
    instructions reflect that. You'll need a new (empty) database and a
    user which has create & update permissions.
+#. A cloud provider, or container platform, that is supported by Cyclid
+   or an available plugin.
 
 Dependencies
 ============
@@ -33,22 +35,9 @@ The Cyclid Server has the following additional dependencies
 
 -  `Sidekiq <http://sidekiq.org/>`__
 -  `Redis server <http://redis.io/>`__
--  Mist
-
-Sidekiq & Redis
----------------
 
 Sidekiq is used to run jobs in the background, and in turn depends on
 Redis to queue data. Cyclid does not use Redis directly.
-
-Mist
-----
-
-Mist is a simple container & virtual machine scheduler which is used to
-create build hosts for use by Cyclid. Cyclid is a client, and you'll
-need to install & configure the Mist server separately (although if you
-like, you can run the Mist server on the same machine as Cyclid). Follow
-the instructions for installing Mist.
 
 Application server
 ------------------
@@ -102,7 +91,7 @@ configuration options to use:
       database: mysql://<username>:<password>@<server>/<database>
       log: stderr
       dispatcher: local
-      builder: mist
+      builder: <Your preferred Builder plugin>
 
 Replace the MySQL username, password & hostname with ones suitable for
 your database server. The user should have create & update privileges.
@@ -121,6 +110,7 @@ Create the Cyclid database
   database, as you WILL lose your data.
 
 ::
+
     $ cyclid-db-init
 
 The database schema will be populated and the initial Admin user &

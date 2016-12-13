@@ -241,6 +241,36 @@ Run the script from the ``Project`` directory in the workspace:
     ]
   }
 
+.. _log-plugin:
+
+***
+Log
+***
+
+The Log plugin writes a message to the build log. It supports the following
+options.
+
+message
+=======
+
+======= ==============================================================
+Name    Description
+======= ==============================================================
+message Log message
+======= ==============================================================
+
+Specify the log message.
+
+Example
+-------
+
+.. code:: json
+
+  {
+    "action" : "log",
+    "message" : "Hello from Cyclid"
+  }
+
 .. _email-plugin:
 
 *****
