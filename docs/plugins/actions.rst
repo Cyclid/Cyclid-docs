@@ -362,6 +362,28 @@ Example
     "to" : "user@example.com"
   }
 
+Configuration
+=============
+
+The email plugin supports the following configuration options.
+
+See the :ref:`configuration-file` documentation for more information on
+configuring plugins.
+
++----------+-----------+------------------+-------------------------------+
+| Name     | Required? | Default          | Description                   |
++==========+===========+==================+===============================+
+| server   | No        | localhost        | The SMTP relay server.        |
++----------+-----------+------------------+-------------------------------+
+| port     | No        | 587              | SMTP server port.             |
++----------+-----------+------------------+-------------------------------+
+| from     | No        | cyclid@cyclid.io | "From" address of the sender. |
++----------+-----------+------------------+-------------------------------+
+| username | No        |                  | SMTP server username.         |
++----------+-----------+------------------+-------------------------------+
+| password | No        |                  | SMTP server password.         |
++----------+-----------+------------------+-------------------------------+
+
 .. _slack-plugin:
 
 *****
