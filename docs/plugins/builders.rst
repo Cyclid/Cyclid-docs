@@ -63,7 +63,7 @@ keypair using the ssh_private_key and ssh_public_key options.
 Example
 -------
 
-Create `f1-micro` sized instances in the 'cyclid' project in the europe-west1-b
+Create f1-micro sized instances in the 'cyclid' project in the europe-west1-b
 region:
 
 .. code:: yaml
