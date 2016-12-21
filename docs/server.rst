@@ -2,9 +2,15 @@
 Cyclid Server
 #############
 
-************
-Installation
-************
+
+* :ref:`installing`
+* :ref:`upgrading`
+
+.. _installing:
+
+**********
+Installing
+**********
 
 These instructions cover installing & configuring your own Cyclid
 server. If you don't want to go through the trouble of doing that, you
@@ -74,6 +80,18 @@ Install Cyclid
 Rubygems will install the Ruby dependencies for Cyclid automatically,
 which may include building native extensions for some Gems.
 
+You will also need to install any dependencies for your preferred database.
+For example, if you are using a MySQL database, we recommend the ``mysql2``
+adaptor:
+
+::
+
+    $ sudo gem install mysql2
+
+If you're not using a MySQL database you should consult the documentation for
+the appropriate ActiveRecord adapter for information on which dependencies
+you'll need to install.
+
 Create the Cyclid configuration file
 ------------------------------------
 
@@ -88,7 +106,7 @@ configuration options to use:
 ::
 
     server:
-      database: mysql://<username>:<password>@<server>/<database>
+      database: mysql2://<username>:<password>@<server>/<database>
       log: stderr
       dispatcher: local
       builder: <Your preferred Builder plugin>
@@ -268,3 +286,60 @@ created the database.
   starting them directly as daemons. We prefer
   `Runit <http://smarden.org/runit/>`__ for this but any process
   supervisor or init scheme should work.
+
+
+.. _upgrading:
+
+*********
+Upgrading
+*********
+
+These instructions cover upgrading an existing Cyclid server. You should
+consult the release notes for the version you new installing for any
+instructions which are specific to that version.
+
+Upgrade Cyclid
+==============
+
+::
+
+    $ sudo gem install cyclid
+
+Rubygems will install the Ruby dependencies for Cyclid automatically,
+which may include building native extensions for some Gems.
+
+You should also install any newer dependencies for your preferred database.
+For example, if you are using a MySQL database, we recommend the ``mysql2``
+adaptor:
+
+::
+
+    $ sudo gem install mysql2
+
+If you're not using a MySQL database you should consult the documentation for
+the appropriate ActiveRecord adapter for information on which dependencies
+you'll need to install.
+
+You should upgrade any Cyclid plugins which you have installed E.g.
+
+::
+
+    $ sudo gem install cyclid-example-plugin
+
+Migrate the Cyclid database
+===========================
+
+.. WARNING::
+  You should back up any databses before running ``cyclid-db-migrate``!
+
+::
+
+    $ cyclid-db-migrate
+
+Any required migrations will be applied to the Cyclid database schema.
+You only need to run ``cyclid-db-migrate`` once per. database.
+
+Restart Cyclid & Sidekiq
+========================
+
+Restart both the Cyclid & Sidekiq processes.
