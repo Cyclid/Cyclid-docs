@@ -2,9 +2,15 @@
 Cyclid Server
 #############
 
-************
-Installation
-************
+
+* :ref:`installing`
+* :ref:`upgrading`
+
+.. _installing:
+
+**********
+Installing
+**********
 
 These instructions cover installing & configuring your own Cyclid
 server. If you don't want to go through the trouble of doing that, you
@@ -22,6 +28,8 @@ Prerequisites
    that is supported by ActiveRecord should work. I use MySQL so these
    instructions reflect that. You'll need a new (empty) database and a
    user which has create & update permissions.
+#. A cloud provider, or container platform, that is supported by Cyclid
+   or an available plugin.
 
 Dependencies
 ============
@@ -33,22 +41,9 @@ The Cyclid Server has the following additional dependencies
 
 -  `Sidekiq <http://sidekiq.org/>`__
 -  `Redis server <http://redis.io/>`__
--  Mist
-
-Sidekiq & Redis
----------------
 
 Sidekiq is used to run jobs in the background, and in turn depends on
 Redis to queue data. Cyclid does not use Redis directly.
-
-Mist
-----
-
-Mist is a simple container & virtual machine scheduler which is used to
-create build hosts for use by Cyclid. Cyclid is a client, and you'll
-need to install & configure the Mist server separately (although if you
-like, you can run the Mist server on the same machine as Cyclid). Follow
-the instructions for installing Mist.
 
 Application server
 ------------------
@@ -85,6 +80,18 @@ Install Cyclid
 Rubygems will install the Ruby dependencies for Cyclid automatically,
 which may include building native extensions for some Gems.
 
+You will also need to install any dependencies for your preferred database.
+For example, if you are using a MySQL database, we recommend the ``mysql2``
+adaptor:
+
+::
+
+    $ sudo gem install mysql2
+
+If you're not using a MySQL database you should consult the documentation for
+the appropriate ActiveRecord adapter for information on which dependencies
+you'll need to install.
+
 Create the Cyclid configuration file
 ------------------------------------
 
@@ -99,10 +106,10 @@ configuration options to use:
 ::
 
     server:
-      database: mysql://<username>:<password>@<server>/<database>
+      database: mysql2://<username>:<password>@<server>/<database>
       log: stderr
       dispatcher: local
-      builder: mist
+      builder: <Your preferred Builder plugin>
 
 Replace the MySQL username, password & hostname with ones suitable for
 your database server. The user should have create & update privileges.
@@ -121,6 +128,7 @@ Create the Cyclid database
   database, as you WILL lose your data.
 
 ::
+
     $ cyclid-db-init
 
 The database schema will be populated and the initial Admin user &
@@ -278,3 +286,60 @@ created the database.
   starting them directly as daemons. We prefer
   `Runit <http://smarden.org/runit/>`__ for this but any process
   supervisor or init scheme should work.
+
+
+.. _upgrading:
+
+*********
+Upgrading
+*********
+
+These instructions cover upgrading an existing Cyclid server. You should
+consult the release notes for the version you new installing for any
+instructions which are specific to that version.
+
+Upgrade Cyclid
+==============
+
+::
+
+    $ sudo gem install cyclid
+
+Rubygems will install the Ruby dependencies for Cyclid automatically,
+which may include building native extensions for some Gems.
+
+You should also install any newer dependencies for your preferred database.
+For example, if you are using a MySQL database, we recommend the ``mysql2``
+adaptor:
+
+::
+
+    $ sudo gem install mysql2
+
+If you're not using a MySQL database you should consult the documentation for
+the appropriate ActiveRecord adapter for information on which dependencies
+you'll need to install.
+
+You should upgrade any Cyclid plugins which you have installed E.g.
+
+::
+
+    $ sudo gem install cyclid-example-plugin
+
+Migrate the Cyclid database
+===========================
+
+.. WARNING::
+  You should back up any databses before running ``cyclid-db-migrate``!
+
+::
+
+    $ cyclid-db-migrate
+
+Any required migrations will be applied to the Cyclid database schema.
+You only need to run ``cyclid-db-migrate`` once per. database.
+
+Restart Cyclid & Sidekiq
+========================
+
+Restart both the Cyclid & Sidekiq processes.

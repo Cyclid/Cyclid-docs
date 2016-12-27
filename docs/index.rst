@@ -57,6 +57,8 @@ Contents
 
    plugins/actions
    plugins/sources
+   plugins/api
+   plugins/builders
    plugins/provisioners
 
 
