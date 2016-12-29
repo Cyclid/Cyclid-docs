@@ -1,0 +1,66 @@
+*************
+Cyclid UI 0.2
+*************
+
+.. contents::
+
+v0.2.2
+------
+
+- Improve invalid/revoked/expired JWT token handling
+
+  * Add exception handling around the ``Users`` model.
+  * Fail authentication if the user can not be retrieved.
+  * Delete the JWT cookie when the user is unauthenticated.
+  * Catch common authentication issues client-side and force re-authentication
+    if an AJAX call fails or returns 401 (Unauthorized)
+
+- Don't display the "Jobs" and "Configuration" links in the navbar if no
+  Organization is set (I.e. the User doesn't belong to any Organizations)
+
+Issues closed
+~~~~~~~~~~~~~
+
+- #21 : Improve invalid token handling
+
+v0.2.1
+------
+
+- CORS support
+
+  * Enable CORS for the ``/health/status`` & ``/health/info`` endpoints so that
+    a server can be monitored from a dashboard.
+
+- Further hosted Cyclid integration
+
+  * Display "Create new organization" links in the Organizations menu and on the
+    users profile if the ``signups`` URL is configured.
+
+- Configure development instances to run on port 9393 by default.
+
+v0.2.0
+------
+
+- Add organization configs
+
+  * Retrieve the current plugin configurations from the server and provide a
+    a form to display & edit the configuration data. Forms are generated
+    dynamically from the configuration schema that the plugin itself provides.
+  * Currently supported data types are:
+
+    - string
+    - password
+    - integer
+    - hash-list
+    - link-relative
+
+- Integrate with hosted Cyclid signups
+
+  * Added the ``signup`` configuration option.
+  * Display a "Sign up here" link on the login page if the ``signup``
+    configuration option is set.
+
+Issues closed
+~~~~~~~~~~~~~
+
+- #13 : Page title is not set on login page
