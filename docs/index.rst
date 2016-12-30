@@ -20,6 +20,7 @@ Contents
 * :ref:`user-docs`
 * :ref:`job-docs`
 * :ref:`plugin-docs`
+* :ref:`release-notes`
 * :ref:`developer-docs`
 
 .. _user-docs:
@@ -61,6 +62,14 @@ Contents
    plugins/builders
    plugins/provisioners
 
+
+.. _release-notes:
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Release Notes
+
+   release_notes/index
 
 .. _developer-docs:
 

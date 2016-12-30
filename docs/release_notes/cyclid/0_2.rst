@@ -1,0 +1,230 @@
+**********
+Cyclid 0.2
+**********
+
+.. contents::
+
+Upgrading
+=========
+
+Refer to the standard instructions for :ref:`upgrading <upgrading>` from a
+previous release of Cyclid.
+
+v0.2.4
+======
+
+Highlights
+----------
+
+This release reorganizes most of the Builder plugins, and enables support for
+the new `LXD <https://github.com/Cyclid/Cyclid-lxd-plugin>`_ &
+:ref:`Google <google>` Builder plugins in addition to the previous
+`Digitalocean <https://github.com/Cyclid/Cyclid-digitalocean-plugin>`_ plugin.
+
+Thanks to the new LXD plugin, the dependency on the Mist LXC driver has been
+removed.
+
+Changes
+-------
+
+- Remove the **mist** plugin
+
+  * Move the **mist** Builder to it's own plugin Gem.
+  * Remove any dependencies on Mist
+
+- Add the :ref:`google Builder plugin <google>`
+
+  * Creates build hosts as Google Compute (GCE) instances.
+
+- Add the :ref:`log Action plugin <log-plugin>` that writes a message to the
+  Job log.
+- Some improvements and fixes for the LXD Builder plguin
+
+  * :ref:`ubuntu` & :ref:`debian` plugins
+
+    + Don't prefix commands with ``sudo``
+
+  * **ssh** plugin
+
+    + Prepend ``sudo -E`` to commands if the user is *not* ``root``
+
+  * Pass the Job context to Transport plugins.
+  * Make sure the Job record ``log`` database column is at least 16MB 
+    (I.e. a column type of ``MEDIUMTEXT`` on MySQL)
+  * Split out some of the RSpec test framework so that it can be used
+    by plugins to run their own tests against a full Cyclid server.
+
+- Proper support for database upgrades
+
+  * Add the ``cyclid-db-migrate`` command and all of the ActiveRecord
+    migrations to the Gem. Database migrations will be run "standalone"
+    from the ``cyclid-db-migrate`` command.
+
+v0.2.3
+======
+
+Highlights
+----------
+
+This is a maintenance release to fix a dependency conflict with the new
+Digitalocean Builder plugin, with no functional changes from the v0.2.2
+release.
+
+v0.2.2
+======
+
+Highlights
+----------
+
+A complete overhaul of the API plugin framework so that plugins can now
+create their own arbitary API endpoints.
+
+The re-written :ref:`github` plugin use this new functionality to provide
+support for Github OAuth: Cyclid can now obtain a Github organization
+OAuth token to authenticate with Github. The plugin also now uses the
+official `Octokit Gem <https://github.com/octokit/octokit.rb>`_ to access
+the Github API, and adds support for ``push`` events.
+
+There's also additional functionality that the Cyclid UI makes use of
+for managing plugin configurations.
+
+Changes
+-------
+
+- Cyclid UI integration
+
+  * Add the ``GET /organizations/:organization/configs`` endpoint to
+    return a list of plugins which have configurations.
+  * Add the ``Plugins::Base.config?`` method to indicate if a plugin
+    supports configuration.
+  * Add the "password" data type and use it where a configuration item
+    is a password.
+
+- Support for real plugins
+
+  * Load any Cyclid plugins found in other Gems (E.g. anything under
+    ``cyclid/plugins/``
+
+- Overhaul the API plugin framework
+
+  * Still provide the default routes (``GET PUT POST DELETE
+    /organizations/:organization/confis/:type/:plugin``) but also allow
+    plugins to add *additional* endpoints underneath
+  * Clean up processesing for the default routes.
+  * Provide the helper methods ``organization_name`` to obtain the current
+    name and ``retrieve_organization`` to retrieve the Organization object
+    inside of an API plugin.
+
+- Rewrite the :ref:`github API plugin <github>`
+
+  * Replace hand-rolled API processing with the Octokit Gem.
+  * Add Github OAuth support
+
+    + Add the additional API endpoints to support the Github Web OAuth
+      process flow.
+    + Set an Organization OAuth token if a user completes the OAuth flow
+      with Github.
+
+  * Add support for the ``push`` event.
+  * Re-factor everything
+
+    + Remove the unused ``hmac_secret`` configuration item.
+
+- Speed up package installation
+
+    * Pass the entrie list of packages to the Provisioner plugin instead
+      of iterating over them and calling the Provisioner multiple times,
+      once per. package.
+    * The Ubuntu & Debian Provisioners pass the list of packages to ``apt``
+      as a single list.
+
+v0.2.1
+======
+
+Highlights
+----------
+
+Source URL deduplication. This solves the issue where a Github Pull Request
+event would provide a URL to the branch to be built which conflicts with the
+URL provided in the Job file; Cyclid will now make an effort to remove
+duplicates, while maintaining relevent information such as which branch to
+build.
+
+Changes
+-------
+
+- Improve "Source" processing
+
+  * Group sources from the job by "type" and pass them each group to the
+    approrpiate plugin as a single list.
+  * :ref:`git` plugin
+
+    + Attempt to deduplicate the list of repositories by normalizing each
+      URL and then comparing the normalized URLs to find duplicates.
+
+Issues closed
+-------------
+
+- #53 : Add a test/monitoring endpoint
+- #67 : De-dup "source" locations
+
+v0.2.0
+======
+
+Highlights
+----------
+
+Major support for the new Cyclid UI, including `CORS <http://enable-cors.org/>`_
+support to allow access to the Cyclid API from a web browser AJAX request, and
+`JWT <https://jwt.io/>`_ authentication.
+
+Changes
+-------
+
+- Cyclid UI integration
+
+  * Enable CORS across the API so that the UI can perform AJAX requests.
+  * Re-write the placeholder "token" authentication method to support proper
+    JWT token authentication.
+  * Add a ``POST /token/:username`` endpoint to retrieve a JWT token.
+  * Move the Cyclid API configuration under the ``server`` declarationin the
+    configuration file so that Cyclid UI can use the same configuration file with
+    its own namespace.
+
+- Add the ``GET /:organization/jobs`` endpoint that returns a list of jobs
+
+  * The request can include search parameters to filter results. Supported parameters
+    are:
+
+    + s_name      - Return jobs matching the name
+    + s_status    - Return jobs matching the status
+    + s_from      - Return jobs started on or after the date
+    + s_to        - Return jobs started on or before the date
+    + limit       - Maximum number of jobs to return
+    + offset      - First job record to return
+    + stats_only  - Don't return any job details
+
+- Add a real name field to users
+
+- Add a healthcheck framework
+
+  * Add the ``GET /health/status`` and ``GET /health/info`` endpoints. ``status``
+    returns either a 200 (OK) or 503 (ERROR) response, and can be used for a load
+    balancer healthcheck. ``info`` always returns a 200 response, with a JSON body
+    with healthcheck information, and can be used by a server status dashboard.
+  * Plugins can implement the ``#status`` method if they have external dependencies;
+    the healthcheck framework will call the ``#status`` method of every plugin and
+    collates the results, so an individual plugin can indicate an error or warning.
+
+- Re-factor the source
+
+  * Rename ``lib`` to ``app``
+  * Provide a proper initialization file under ``lib`` that middleware can
+    ``require`` from the Gem
+
+Issues closed
+-------------
+
+- #5  : Stage success/failure handlers are not automatically included & serialized
+- #61 : Job "Ended" time not being set on success
+- #59 : Usage of SHA-1 for HMAC

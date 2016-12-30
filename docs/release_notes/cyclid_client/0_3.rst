@@ -1,0 +1,41 @@
+*****************
+Cyclid Client 0.3
+*****************
+
+.. contents::
+
+v0.3.3
+======
+
+Changes
+-------
+
+- The ``User::user_add`` and ``User::user_modify`` methods now accept a
+  previously-hashed Bcrypt2 password string in addition to a plaintext
+  password that it will then hash itself.
+
+v0.3.2
+======
+
+Changes
+-------
+
+- Support the ``password`` configuration data type when the user displays a
+  plugin configuration with the ``config show`` command. Passwords are always
+  displayed as a series of ``*`` characters.
+
+v0.3.1
+======
+
+Changes
+-------
+
+- Added client support for all 3 authentication methods supported by Cyclid
+  (Password, HMAC & JWT)
+
+New methods
+-----------
+
+- ``Auth::token_get`` to retreive a JWT token from a Cyclid server.
+- ``Health::health_ping`` to retrieve the current health status from a Cyclid
+  server.

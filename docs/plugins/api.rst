@@ -7,7 +7,7 @@ API extensions
 .. contents::
    :depth: 2
 
-.. _google:
+.. _github:
 
 ******
 Github
