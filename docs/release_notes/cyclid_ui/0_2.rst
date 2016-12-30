@@ -4,8 +4,24 @@ Cyclid UI 0.2
 
 .. contents::
 
+Upgrading
+=========
+
+Refer to the standard instructions for :ref:`upgrading <upgrading>` from a
+previous release of Cyclid.
+
 v0.2.2
-------
+======
+
+Highlights
+----------
+
+Some UI & authentication improvements. Both the server & client side
+Javascript now handle invalid or expired authentication tokens far more
+gracefully, forcing re-authentication when necessary.
+
+Changes
+-------
 
 - Improve invalid/revoked/expired JWT token handling
 
@@ -19,12 +35,21 @@ v0.2.2
   Organization is set (I.e. the User doesn't belong to any Organizations)
 
 Issues closed
-~~~~~~~~~~~~~
+-------------
 
 - #21 : Improve invalid token handling
 
 v0.2.1
-------
+======
+
+Highlights
+----------
+
+Support for the updated hosted Cyclid signups process, and CORS support for
+the health API endpoints.
+
+Changes
+-------
 
 - CORS support
 
@@ -39,7 +64,17 @@ v0.2.1
 - Configure development instances to run on port 9393 by default.
 
 v0.2.0
-------
+======
+
+Highlights
+----------
+
+Provide a UI for Cyclid plugin configuration data. Every plugin can define it's
+own schema, so forms are generated dynamically, client side, from the schema
+information provided from the plugin API.
+
+Changes
+-------
 
 - Add organization configs
 
@@ -61,6 +96,6 @@ v0.2.0
     configuration option is set.
 
 Issues closed
-~~~~~~~~~~~~~
+-------------
 
 - #13 : Page title is not set on login page

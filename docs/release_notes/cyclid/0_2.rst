@@ -4,26 +4,51 @@ Cyclid 0.2
 
 .. contents::
 
+Upgrading
+=========
+
+Refer to the standard instructions for :ref:`upgrading <upgrading>` from a
+previous release of Cyclid.
+
 v0.2.4
-------
+======
 
-- Remove the ``mist`` plugin
+Highlights
+----------
 
-  * Move the ``mist`` Builder to it's own plugin Gem.
+This release reorganizes most of the Builder plugins, and enables support for
+the new `LXD <https://github.com/Cyclid/Cyclid-lxd-plugin>`_ &
+:ref:`Google <google>` Builder plugins in addition to the previous
+`Digitalocean <https://github.com/Cyclid/Cyclid-digitalocean-plugin>`_ plugin.
+
+Thanks to the new LXD plugin, the dependency on the Mist LXC driver has been
+removed.
+
+Changes
+-------
+
+- Remove the **mist** plugin
+
+  * Move the **mist** Builder to it's own plugin Gem.
   * Remove any dependencies on Mist
 
-- Add the ``google`` Builder plugin
+- Add the :ref:`google Builder plugin <google>`
 
   * Creates build hosts as Google Compute (GCE) instances.
 
-- Add the ``log`` Action plugin that writes a message to the Job
-  log.
+- Add the :ref:`log Action plugin <log-plugin>` that writes a message to the
+  Job log.
 - Some improvements and fixes for the LXD Builder plguin
 
-  * Don't prefix commands with ``sudo``
-  * Add ``sudo -E`` to commands in the ``ssh`` Transport if the user
-    is _not_ ``root``
-  * Pass the Job context to the Transport plugin.
+  * :ref:`ubuntu` & :ref:`debian` plugins
+
+    + Don't prefix commands with ``sudo``
+
+  * **ssh** plugin
+
+    + Prepend ``sudo -E`` to commands if the user is *not* ``root``
+
+  * Pass the Job context to Transport plugins.
   * Make sure the Job record ``log`` database column is at least 16MB 
     (I.e. a column type of ``MEDIUMTEXT`` on MySQL)
   * Split out some of the RSpec test framework so that it can be used
@@ -36,13 +61,35 @@ v0.2.4
     from the ``cyclid-db-migrate`` command.
 
 v0.2.3
-------
+======
 
-- Maintenance release to fix a dependency conflict with the new
-  Digitalocean Builder plugin.
+Highlights
+----------
+
+This is a maintenance release to fix a dependency conflict with the new
+Digitalocean Builder plugin, with no functional changes from the v0.2.2
+release.
 
 v0.2.2
-------
+======
+
+Highlights
+----------
+
+A complete overhaul of the API plugin framework so that plugins can now
+create their own arbitary API endpoints.
+
+The re-written :ref:`github` plugin use this new functionality to provide
+support for Github OAuth: Cyclid can now obtain a Github organization
+OAuth token to authenticate with Github. The plugin also now uses the
+official `Octokit Gem <https://github.com/octokit/octokit.rb>`_ to access
+the Github API, and adds support for ``push`` events.
+
+There's also additional functionality that the Cyclid UI makes use of
+for managing plugin configurations.
+
+Changes
+-------
 
 - Cyclid UI integration
 
@@ -56,7 +103,7 @@ v0.2.2
 - Support for real plugins
 
   * Load any Cyclid plugins found in other Gems (E.g. anything under
-  ``cyclid/plugins/``
+    ``cyclid/plugins/``
 
 - Overhaul the API plugin framework
 
@@ -68,7 +115,7 @@ v0.2.2
     name and ``retrieve_organization`` to retrieve the Organization object
     inside of an API plugin.
 
-- Rewrite the ``github`` plugin
+- Rewrite the :ref:`github API plugin <github>`
 
   * Replace hand-rolled API processing with the Octokit Gem.
   * Add Github OAuth support
@@ -92,25 +139,47 @@ v0.2.2
       as a single list.
 
 v0.2.1
-------
+======
+
+Highlights
+----------
+
+Source URL deduplication. This solves the issue where a Github Pull Request
+event would provide a URL to the branch to be built which conflicts with the
+URL provided in the Job file; Cyclid will now make an effort to remove
+duplicates, while maintaining relevent information such as which branch to
+build.
+
+Changes
+-------
 
 - Improve "Source" processing
 
   * Group sources from the job by "type" and pass them each group to the
     approrpiate plugin as a single list.
-  * ``git`` plugin
+  * :ref:`git` plugin
 
     + Attempt to deduplicate the list of repositories by normalizing each
       URL and then comparing the normalized URLs to find duplicates.
 
 Issues closed
-~~~~~~~~~~~~~
+-------------
 
 - #53 : Add a test/monitoring endpoint
 - #67 : De-dup "source" locations
 
 v0.2.0
-------
+======
+
+Highlights
+----------
+
+Major support for the new Cyclid UI, including `CORS <http://enable-cors.org/>`_
+support to allow access to the Cyclid API from a web browser AJAX request, and
+`JWT <https://jwt.io/>`_ authentication.
+
+Changes
+-------
 
 - Cyclid UI integration
 
@@ -154,7 +223,7 @@ v0.2.0
     ``require`` from the Gem
 
 Issues closed
-~~~~~~~~~~~~~
+-------------
 
 - #5  : Stage success/failure handlers are not automatically included & serialized
 - #61 : Job "Ended" time not being set on success

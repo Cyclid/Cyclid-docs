@@ -1,5 +1,6 @@
-Contents
-========
+*************
+Release Notes
+*************
 
 * :ref:`cyclid`
 * :ref:`cyclid-ui`
