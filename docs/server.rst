@@ -183,7 +183,14 @@ Create the application directory
 
 ::
 
-    $ mkdir -p /var/lib/cyclid
+    $ sudo mkdir -p /var/lib/cyclid
+    
+Create the log directory
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+::
+
+    $ sudo mkdir /var/log/cyclid
 
 Configure Unicorn for the Cyclid API server
 -------------------------------------------
