@@ -10,6 +10,22 @@ Upgrading
 Refer to the standard instructions for :ref:`upgrading <upgrading>` from a
 previous release of Cyclid.
 
+v0.2.3
+======
+
+Highlights
+----------
+
+Minor bug-fixes and improvments.
+
+Changes
+-------
+
+- Allow the user to set SESSION_SECRET and COOKIE_SECRET as seperate
+  environment variables and set COOKIE_SECRET to a default value if one isn't
+  set in the environemnt to offer a basic level of protection to the JWT
+  cookie.
+
 v0.2.2
 ======
 
