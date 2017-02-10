@@ -21,14 +21,14 @@ Minor bug-fixes and improvments.
 Changes
 -------
 
-- Remove the `logout` method from the SSH transport so that we don't needlessly
-  run `exit` at the end of a build.
-- Always run `apt-get update` first in Ubuntu & Debian provisioners so that the
-  cache is up to date before attempting to install anything.
+- Remove the ``logout`` method from the SSH transport so that we don't
+  needlessly run ``exit`` at the end of a build.
+- Always run ``apt-get update`` first in Ubuntu & Debian provisioners so that
+  the cache is up to date before attempting to install anything.
 - Fix a bug in the Github plugin so that it pulls from the correct upstream
   repository when a Pull Request is opened from a forked repository.
 - Let the user (or a script) pass the initial admin user secret & password to
-  `cyclid-db-init`
+  ``cyclid-db-init``
 
 Issues closed
 -------------
