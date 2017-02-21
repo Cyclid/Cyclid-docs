@@ -21,6 +21,23 @@ allows users to obtain an OAuth2 token for their organization which can in
 turn be used to authenticate Cyclid with Github, including cloneing private
 repositories.
 
+Job context
+===========
+
+The Github plugin provides the following job context information.
+
++----------------+----------------------------------------------------------------------+
+| Name           | Comment                                                              |
++================+======================================================================+
+| github_event   | Github event that triggered the job; ``pull_request`` or ``push``.   |
++----------------+----------------------------------------------------------------------+
+| github_user    | User that created the Pull Request or Push                           |
++----------------+----------------------------------------------------------------------+
+| github_ref     | Name of the branch that the event refers to.                         |
++----------------+----------------------------------------------------------------------+
+| github_comment | Title of the pull request or push message.                           |
++----------------+----------------------------------------------------------------------+
+
 Configuration
 =============
 

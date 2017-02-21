@@ -351,3 +351,7 @@ it is running ubuntu trusty"``
 Context variables can be used pretty much anywhere where you would use a
 string with Sources, Stages or Steps (it doesn't make sense to use them in
 Environments or Secrets!)
+
+See :ref:`Contexts <context-info>` for a complete list of the available job context variables.
+Plugins may also add additional job context variables; you should check the
+plugin documentation for information on the variables they might add.
