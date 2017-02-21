@@ -21,31 +21,65 @@ Configuration
 Configuration file format
 =========================
 
-The configuration file is a simple YAML file with only five options.
+The configuration file is a simple YAML file with the following options.
 
-+----------------+-------------+----------------------------------------------------------+
-| Option         | Required?   | Description                                              |
-+================+=============+==========================================================+
-| server         | Required    | The hostname of the Cyclid server.                       |
-+----------------+-------------+----------------------------------------------------------+
-| port           | Optional    | The port to use for connections to the Cyclid server.    |
-+----------------+-------------+----------------------------------------------------------+
-| organization   | Required    | The organization name.                                   |
-+----------------+-------------+----------------------------------------------------------+
-| username       | Required    | The username that is associated with the organization.   |
-+----------------+-------------+----------------------------------------------------------+
-| secret         | Required    | The HMAC signing secret for the user.                    |
-+----------------+-------------+----------------------------------------------------------+
++----------------+----------------------------------------------------------+
+| Option         | Description                                              |
++================+==========================================================+
+| url            | The URL of the Cyclid server.                            |
++----------------+----------------------------------------------------------+
+| server         | The hostname of the Cyclid server.                       |
++----------------+----------------------------------------------------------+
+| port           | The port to use for connections to the Cyclid server.    |
++----------------+----------------------------------------------------------+
+| tls            | Use TLS (HTTPS) for connections to the Cyclid server.    |
++----------------+----------------------------------------------------------+
+| organization   | The organization name.                                   |
++----------------+----------------------------------------------------------+
+| username       | The username that is associated with the organization.   |
++----------------+----------------------------------------------------------+
+| secret         | The HMAC signing secret for the user.                    |
++----------------+----------------------------------------------------------+
 
-Example
--------
+You can specify the server URL with *either* the ``url`` options or seperate
+``server``, ``port`` and ``tls`` options.
+
+Examples
+--------
 
 ::
 
     server: cyclid.example.com
+    port: 8361
+    tls: true
     organization: my_organization
     username: user
     secret: b1fc42ef648b4407f30dc77f328dbb86b03121fb15aba256497ef97ec9a3cd02
+
+::
+
+    url: https://cyclid.example.com:8361
+    organization: my_organization
+    username: user
+    secret: b1fc42ef648b4407f30dc77f328dbb86b03121fb15aba256497ef97ec9a3cd02
+
+
+Authenticating with a server
+=============================
+
+You can use the ``user authenticate`` command to easily authenticate with a
+Cyclid server and automatically create your client configuration file(s).
+
+::
+
+  $ cyclid user authenticate -s https://cyclid.example.com
+  Username: example
+  Password: 
+  Authenticating example with https://cyclid.example.com:8361
+  Creating configuration file for organization example
+
+One configuration file will be created for every organization that your user is
+a member of.
 
 Switching between configurations
 ================================
@@ -158,6 +192,29 @@ any other Cyclid commands.
     $ cyclid user modify --email robert@example.com
     # Change your HMAC secret
     $ cyclid user modify --secret b072d8b51cec2755145c401b9249a60ebd89b4704eeebc5b6805ba682d7fac53
+
+
+user authenticate
+-----------------
+
+Authenticate with a Cyclid server, using your username & password, and create
+a configuration file in ``$HOME/.cyclid`` for each organization that your user
+belongs to.
+
+You can pass the following options:
+
++------------+----------------+---------------------------+
+| Option     | Short option   | Description               |
++============+================+===========================+
+| --server   | -s             | URL of the Cyclid server. |
++------------+----------------+---------------------------+
+| --username | -u             | Your username.            |
++------------+----------------+---------------------------+
+
+If you do not pass a server URL the default of ``https://api.cyclid.io`` is
+assumed.
+
+If you do not pass your username then you will be asked to enter it.
 
 Organization commands
 =====================
