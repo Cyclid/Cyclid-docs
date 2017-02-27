@@ -45,6 +45,7 @@ Contents
    jobs/overview
    jobs/stages
    jobs/sequence
+   jobs/modifiers
    jobs/environments
    jobs/sources
    jobs/secrets
