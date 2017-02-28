@@ -12,6 +12,7 @@ Release Notes
    :maxdepth: 3
    :caption: Cyclid API
 
+   cyclid/0_3
    cyclid/0_2
 
 
@@ -30,4 +31,5 @@ Release Notes
    :maxdepth: 3
    :caption: Cyclid Client
 
+   cyclid_client/0_4
    cyclid_client/0_3

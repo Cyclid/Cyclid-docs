@@ -434,6 +434,31 @@ to be set to the path of a valid text editor that it can start.
 Job commands
 ============
 
+job stats
+---------
+
+Show the total number of jobs.
+
+::
+
+    $ cyclid job stats
+    Total jobs: 2
+
+job list
+--------
+
+List the details of all jobs.
+
+::
+
+    $ cyclid job list
+    Name: test_job
+      Job: 1
+      Version: 1.0.0
+    Name: example_job
+      Job: 2
+      Version: 1.0.0
+
 job show
 --------
 
@@ -626,6 +651,8 @@ Admin commands are grouped under the following categories:
 | organization   | Manage organizations   |
 +----------------+------------------------+
 | user           | Manage users           |
++----------------+------------------------+
+| job            | Manage jobs            |
 +----------------+------------------------+
 
 Admin organization commands
@@ -861,3 +888,34 @@ confirm the deletion first; you can over-ride this with the
 
     # Delete the user 'bob' without asking for confirmation
     $ cyclid admin user delete bob --force
+
+Admin job commands
+------------------
+
+The ``admin job`` command has a series of sub-commands which are used to manage
+jobs.
+
+admin job stats
+^^^^^^^^^^^^^^^
+
+Show the total number of jobs.
+
+::
+
+    $ cyclid job stats example
+    Total jobs: 2
+
+admin job list
+^^^^^^^^^^^^^^
+
+List the details of all jobs.
+
+::
+
+    $ cyclid job list example
+    Name: test_job
+      Job: 1
+      Version: 1.0.0
+    Name: example_job
+      Job: 2
+      Version: 1.0.0
