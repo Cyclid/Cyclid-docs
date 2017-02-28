@@ -1,0 +1,29 @@
+*****************
+Cyclid Client 0.4
+*****************
+
+.. contents::
+
+v0.4.0
+======
+
+Changes
+-------
+
+- Added the ``job stats`` and ``job list`` commands to show the number of jobs,
+  and list the details of all jobs.
+- Added the ``user authenticate`` command to log in to a server with a
+  username & password and automatically download & create configuration files
+  for every organization the user is a member of. Requires a server running
+  at Cyclid 0.4.0 or newer.
+- Full support for HTTPS for all API calls; the ``url`` and ``use_tls``
+  configurations options have been added. 
+- Plugable output formatters and better support for output to things that are
+  not terminals E.g. piping output to ``less`` will no longer produce XTerm
+  control characters in the output.
+
+New methods
+-----------
+
+- ``Job::job_stats`` to retrieve job statistics for an organization.
+- ``Job::job_list`` to retrieve a list of jobs.

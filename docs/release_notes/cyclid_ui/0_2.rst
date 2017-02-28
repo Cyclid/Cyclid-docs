@@ -10,6 +10,23 @@ Upgrading
 Refer to the standard instructions for :ref:`upgrading <upgrading>` from a
 previous release of Cyclid.
 
+v0.2.4
+======
+
+Highlights
+----------
+
+Support for login redirects, as well as some minor bug fixes & improvements.
+
+Changes
+-------
+
+- Attempt to redirect the user to the original target after login.
+- If signup mode is enabled display an Introduction page if the user does not
+  belong to any organizations.
+- Insert the users HMAC secret when they download their client configuration
+  file.
+
 v0.2.3
 ======
 
