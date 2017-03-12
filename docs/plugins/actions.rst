@@ -462,3 +462,83 @@ Example
     "subject": "%{job_name} succeeded",
     "message": "Job %{organization}/%{job_name} (job #%{job_id}) completed successfully.",
   }
+
+.. _simplecov-plugin:
+
+*********
+Simplecov
+*********
+
+The Simplecov plugin reads a Simplecov test coverage report. It supports the
+following options.
+
+path
+====
+
+===== ====================================================
+Name  Description
+===== ====================================================
+path  Path to the coverage report.
+===== ====================================================
+
+The ``path`` option gives a fully qualified path to the generated Simplecov
+coverage report, in JSON format.
+
+The ``covered_percent`` metric from the report is added to the Job context in
+the ``simplecov_coverage`` variable, as a percentage to 2 decimal places E.g.
+if the generated report contains ``{"covered_percent":86.9795918367347}`` then
+this will be rounded to ``86.98%`` by the plugin.
+
+Your project should install & configure the Simplecov-JSON Gem to generate a
+JSON coverage report.
+
+Example
+-------
+
+.. code:: json
+
+  {
+    "action" : "simplecov",
+    "path" : "%{workspace}/project/coverage.json"
+  }
+
+.. _cobertura-plugin:
+
+*********
+Cobertura
+*********
+
+The Cobertura plugin reads a Cobertura compatable test coverage report. It
+supports the following options.
+
+path
+====
+
+===== ====================================================
+Name  Description
+===== ====================================================
+path  Path to the coverage report.
+===== ====================================================
+
+The ``path`` option gives a fully qualified path to the generated coverage
+report, in XML format.
+
+The ``line-rate`` metric from the report is added to the Job context in
+the ``cobertura_line_rate`` variable, and the ``branch-rate`` metric is added
+as ``cobertura_branch_rate``. Both metrics are provided as a percentage to 2
+decimal places E.g. if the generated report contains
+``<coverage line-rate="0.9" branch-rate="0.75">`` then ``cobertura_line_rate``
+will be ``90%`` and ``cobertura_branch_rate`` will be ``75%``
+
+The Cobertura plugin can be used to read any Cobertura compatible coverage
+report.
+
+Example
+-------
+
+.. code:: json
+
+  {
+    "action" : "cobertura",
+    "path" : "%{workspace}/project/coverage.xml"
+  }
