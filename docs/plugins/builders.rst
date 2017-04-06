@@ -45,7 +45,7 @@ configuring plugins.
 +-----------------------+-----------+----------------------------------+-------------------------------------------------------+
 | ssh_public_key        | No        | ``/etc/cyclid/id_rsa_build.pub`` | Path to the build users public key.                   |
 +-----------------------+-----------+----------------------------------+-------------------------------------------------------+
-| instance_name         | No        | cyclid-build                     | Cyclid build host name prefix                         |
+| instance_name         | No        | cyclid-build                     | Cyclid build host name prefix.                        |
 +-----------------------+-----------+----------------------------------+-------------------------------------------------------+
 
 The client_email & key file found at json_key_location are used to authenticate
@@ -78,4 +78,44 @@ region:
         client_email: 123456789099-compute@developer.gserviceaccount.com
         json_key_location: /var/lib/google/gcp.json
         zone: europe-west1-b
+
+
+.. _docker:
+
+******
+Docker
+******
+
+The Docker Builder plugin creates creates container build hosts using Docker.
+
+Configuration
+=============
+
+The Docker builder supports the following plugin configuration options.
+
+See the :ref:`configuration-file` documentation for more information on
+configuring plugins.
+
++-----------------------+-----------+----------------------------------+-------------------------------------------------------+
+| Name                  | Required? | Default                          | Description                                           |
++=======================+===========+==================================+=======================================================+
+| api                   | No        | unix:///var/run/docker.sock      | Your Docker daemon socket.                            |
++-----------------------+-----------+----------------------------------+-------------------------------------------------------+
+| instance_name         | No        | cyclid-build                     | Cyclid build host name prefix.                        |
++-----------------------+-----------+----------------------------------+-------------------------------------------------------+
+
+Example
+-------
+
+Create Docker instances on a remote server:
+
+.. code:: yaml
+
+  server:
+    ...
+    builder: docker
+    ...
+    plugins:
+      docker:
+        api: tcp://example.com:5422 
 
