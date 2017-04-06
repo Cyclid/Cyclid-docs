@@ -21,7 +21,7 @@ or the Stage defined in the ``on_success`` handler is run.
 Example
 =======
 
-Run the ``prepare`` Stage, followed by the ``test`` Stage. Only run run the
+Run the ``prepare`` Stage, followed by the ``test`` Stage. Only run the
 ``build`` Stage if the Job context variable ``github_branch`` is ``master``:
 
 .. highlight:: json
