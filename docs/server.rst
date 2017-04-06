@@ -23,7 +23,7 @@ Prerequisites
    14.04, but other distributions and versions should work just as well.
 #. Ruby 2.x. Cyclid has been developed against Ruby 2.3 but any 2.x
    version should work. If you use Ubuntu you might want to to consider
-   installing Ruby 2.3 from the Brightbox RubyNG PPA.
+   installing Ruby 2.3 from the `Brightbox RubyNG PPA <https://launchpad.net/~brightbox/+archive/ubuntu/ruby-ng>`__.
 #. A SQL database. Cyclid uses ActiveRecord, so in theory any database
    that is supported by ActiveRecord should work. I use MySQL so these
    instructions reflect that. You'll need a new (empty) database and a
