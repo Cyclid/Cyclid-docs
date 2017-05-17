@@ -1,3 +1,5 @@
+.. _cyclid_server:
+
 #############
 Cyclid Server
 #############

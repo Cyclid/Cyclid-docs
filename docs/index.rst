@@ -23,6 +23,7 @@ Contents
 * :ref:`release-notes`
 * :ref:`developer-docs`
 
+
 .. _user-docs:
 
 .. toctree::
@@ -34,6 +35,7 @@ Contents
    configuration_file
    vagrant
    cli
+   faqs
 
 
 .. _job-docs:
