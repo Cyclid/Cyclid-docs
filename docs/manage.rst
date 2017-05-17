@@ -1,3 +1,5 @@
+.. _cyclid_ui_server:
+
 ################
 Cyclid UI Server
 ################
