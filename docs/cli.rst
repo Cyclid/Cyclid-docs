@@ -12,7 +12,7 @@ Installation
 
 ::
 
-    $ gem install cyclid-client -s http://rubygems.cyclid.io
+    $ gem install cyclid-client
 
 *************
 Configuration
