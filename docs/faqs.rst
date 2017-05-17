@@ -2,6 +2,15 @@
 Frequently Asked Questions
 ##########################
 
+Contents
+========
+
+* :ref:`cyclid-faqs`
+* :ref:`github-faqs`
+* :ref:`ci-faqs`
+
+.. _cyclid-faqs:
+
 Cyclid
 ======
 
@@ -66,6 +75,29 @@ Why did you build Cyclid?
 We feel that `Continuous Integration is not a solved problem <http://cyclid.io/ci-isnt-solved-problem/>`_,
 and we want `something that works for modern DevOps tools and workflows <http://cyclid.io/continuous-integration-rest-us/>`_,
 not just traditional software development.
+
+
+.. _github-faqs:
+
+Github
+======
+
+Why does Cyclid need such broad access to my Github account?
+------------------------------------------------------------
+
+This is a `known issue with Github OAuth permissions <https://github.com/dear-github/dear-github/issues/113>`_.
+
+Because Cyclid supports both Public & Private Github repositories, even for
+Free users, it requires the appropriate permissions with Github for both.
+Sadly the Github OAuth permissions are not particularly granular, especially
+those for Private repositories, and so it may appear that Cyclid is asking for
+overly broad access to your Github account.
+
+Although Cyclid must request these permissions from Github, in reality the
+only operation the Github plugin itself performs is to update your Pull
+Request status.
+
+.. _ci-faqs:
 
 Continuous Integration
 ======================
