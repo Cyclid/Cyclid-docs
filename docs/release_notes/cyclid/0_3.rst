@@ -10,6 +10,25 @@ Upgrading
 Refer to the standard instructions for :ref:`upgrading <upgrading>` from a
 previous release of Cyclid.
 
+v0.3.2
+======
+
+Highlights
+----------
+
+A small release, mostly intended to add some features required by the hosted
+version of Cyclid.
+
+Changes
+-------
+
+- Allow the job to specificy an instance size (E.g. 'small') and map this to a
+  virtual machine type where it makes sense. Currently this is only supported
+  by the Google Builder.
+- Fix a database connection leak with the Local (Sidekiq based) Dispatcher; it
+  will now ensure all database connections are "checked in" to the pool once
+  the job has finished.
+
 v0.3.1
 ======
 

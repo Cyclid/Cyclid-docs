@@ -10,6 +10,25 @@ Upgrading
 Refer to the standard instructions for :ref:`upgrading <upgrading>` from a
 previous release of Cyclid.
 
+v0.2.5
+======
+
+Highlights
+----------
+
+A small release, mostly intended to add some features required by the hosted
+version of Cyclid.
+
+Changes
+-------
+
+- Add an API that flushes the caches User object, which can be used to force a
+  refresh whenever the user changes E.g. adding or removing an Organization.
+- Redirect to / on API authentication failure, rather than directly to /login
+- Add a "Catch all" route that redirects unknown locations to /
+- Fix the generated Cyclid Client configuration files.
+- Slight modifications to the session cookies.
+
 v0.2.4
 ======
 

@@ -16,6 +16,29 @@ Google
 The Google Builder plugin creates creates Google Compute Engine (GCE) virtual
 machines build hosts using Google Cloud.
 
+Instance Sizes
+==============
+
+The Google builder maps the generic instance size types to the following Google
+Compute machine types.
+
++--------------+---------------------+
+| Generic Size | Google Machine Type |
++==============+=====================+
+| micro        | f1-micro            |
++--------------+---------------------+
+| mini         | g1-small            |
++--------------+---------------------+
+| small        | n1-standard-1       |
++--------------+---------------------+
+| medium       | n1-standard-2       |
++--------------+---------------------+
+| large        | n1-standard-4       |
++--------------+---------------------+
+
+The default instance size (E.g. if none, or ``default`` is given) is the
+machine type set in the ``machine_type`` configuration option (below).
+
 Configuration
 =============
 

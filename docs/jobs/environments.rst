@@ -7,7 +7,9 @@ Environments
 The Environment specifies how the build image should be configured for the
 running job. You can specify the operating system and version to use,
 additional software repositories to configure and additional packages to
-install before the job is run.
+install before the job is run. Different Builders & Provisioners may support
+additional options, such as the virtual machine size, or package repository
+keys. 
 
 .. _environment_example:
 
@@ -20,6 +22,7 @@ Example
 
   "environment" : {
     "os" : "ubuntu_14_04",
+    "size" : "small",
     "repos" : [
       {
         "url" : "ppa:brightbox/ruby-ng"
@@ -58,6 +61,27 @@ provide build images and request an ``ubuntu_14_04`` image, the AWS Builder
 may create an instance using the ``ami-1b0d920c`` AMI; but a different Cyclid
 server configured to use LXD for its build images map download the pre-built
 Ubuntu Trusty LXD image.
+
+***************
+Build host size
+***************
+
+===== ====================================================
+Name  Description
+===== ====================================================
+size  Desired build host size
+===== ====================================================
+
+The ``size`` options selects on of five generic build host instance sizes:
+``micro``, ``mini``, ``small``, ``medium`` and ``large``.
+
+The Builder plugin can map these generic sizes to the actual virtual machine
+type. The actual build host configuration may differ between Builders, so
+you should consult the documentation for your :ref:`Builder <builders-plugin>`
+for information on what each generic size means.
+
+This option largely only makes sense for virtual machine Build hosts, and is
+generally ignored for container type Build hosts.
 
 ***************
 Additional data
