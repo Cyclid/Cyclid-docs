@@ -10,6 +10,33 @@ Upgrading
 Refer to the standard instructions for :ref:`upgrading <upgrading>` from a
 previous release of Cyclid.
 
+v0.3.3
+======
+
+Highlights
+----------
+
+Extended logic with the addition of the fail_if modifier, which will cause a
+stage to fail if the condition is true.
+
+This release also offers a few bug fixes and enhancements to the Github API
+plugin.
+
+Changes
+-------
+
+- Add the fail_if modifier. If the test evaulates to "true" then the stage will
+  be considered failed regardless of the status of the actual Steps & Stages.
+- Add github_owner, github_repository and github_number to the context when a
+  job is triggered via. a Github Pull Request event.
+- Fix an issue where the Github API plugin will fail to find the Cyclid job
+  file if the job file has a .yaml extension.
+
+Issues closed
+-------------
+
+#114 - Match .yaml extensions in Github plugin
+
 v0.3.2
 ======
 

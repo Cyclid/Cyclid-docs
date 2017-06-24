@@ -18,11 +18,15 @@ If the result of the comparision is ``true`` (``only_if``) or ``false``
 not run it is skipped, the stage is considered successful, and the next Stage
 or the Stage defined in the ``on_success`` handler is run.
 
+In addition, the ``fail_if`` modifier can be used to decide if a Stage should
+fail, regardless of the status of any Steps within the Stage.
+
 Example
 =======
 
-Run the ``prepare`` Stage, followed by the ``test`` Stage. Only run the
-``build`` Stage if the Job context variable ``github_branch`` is ``master``:
+Run the ``prepare`` Stage, followed by the ``test`` Stage. Fail at the ``test``
+Stage if test coverage if less than 90%. Only run the ``build`` Stage if the
+Job context variable ``github_branch`` is ``master``:
 
 .. highlight:: json
 .. code:: json
@@ -34,6 +38,7 @@ Run the ``prepare`` Stage, followed by the ``test`` Stage. Only run the
     },
     {
       "stage" : "test",
+      "fail_if" : "%{cobertura_line_rate} < 90%"
       "on_failure" : "failure"
     },
     {
@@ -60,6 +65,11 @@ not_if
 ``not_if`` will cause a Stage to be run if the comparision evaluates to
 ``false`` E.g. ``8 eq 9``, ``'x' != 'y'``.
 
+fail_if
+=======
+
+``fail_if`` will cause a Stage to fail if the comparision evaluates to
+``true`` E.g. ``1 eq 1``, ``'a' != 'b'``.
 
 *********
 Operators
