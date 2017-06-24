@@ -24,8 +24,9 @@ fail, regardless of the status of any Steps within the Stage.
 Example
 =======
 
-Run the ``prepare`` Stage, followed by the ``test`` Stage. Only run the
-``build`` Stage if the Job context variable ``github_branch`` is ``master``:
+Run the ``prepare`` Stage, followed by the ``test`` Stage. Fail at the ``test``
+Stage if test coverage if less than 90%. Only run the ``build`` Stage if the
+Job context variable ``github_branch`` is ``master``:
 
 .. highlight:: json
 .. code:: json
