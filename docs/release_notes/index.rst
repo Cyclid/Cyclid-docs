@@ -12,6 +12,7 @@ Release Notes
    :maxdepth: 3
    :caption: Cyclid API
 
+   cyclid/0_4
    cyclid/0_3
    cyclid/0_2
 

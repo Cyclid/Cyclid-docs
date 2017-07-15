@@ -532,6 +532,61 @@ You can then check the status of the job with the ``job status``,
     $ cyclid job submit job.yml
     Job: 8
 
+job lint
+--------
+
+Lint (verify) a Cyclid job file and provide information about any Warning &
+Errors that are found. This can be used to ensure that your Cyclid job file is
+syntactically correct before you attempt to run it, allowing the user to catch
+potential problems quickly.
+
++----------+----------------+--------------------------+
+| Option   | Short option   | Description              |
++==========+================+==========================+
+| --json   | -j             | Parse the file as JSON   |
++----------+----------------+--------------------------+
+| --yaml   | -y             | Parse the file as YAML   |
++----------+----------------+--------------------------+
+
+::
+
+    $ cyclid job lint job.yml
+    Error: The Job does not have a name.
+    Warning: No version is defined for the Job. The default of 1.0.0 will be used.
+    Warning: No environment is defined. Defaults will apply.
+    Warning: No version is given for the Stage 'hello-world'. The default of 1.0.0 will be used.
+    Warning: A Stage in the Sequence does not specify a version for the Stage 'hello-world'. The latest will always be used.
+
+    Errors: 1
+    Warnings: 4
+
+job format
+----------
+
+Reformat, or convert, a Cyclid job file into standardised JSON or YAML.
+
++-----------+----------------+--------------------------------+
+| Option    | Short option   | Description                    |
++===========+================+================================+
+| --json    | -j             | Parse the input file as JSON   |
++-----------+----------------+--------------------------------+
+| --yaml    | -y             | Parse the input file as YAML   |
++-----------+----------------+--------------------------------+
+| --jsonout | -J             | Output JSON                    |
++-----------+----------------+--------------------------------+
+| --yamlout | -Y             | Output YAML                    |
++-----------+----------------+--------------------------------+
+
+::
+
+    $ cyclid job format job.yml --jsonout
+    {
+      "name":"job",
+      "environment":{},
+      "stages":[
+    ...
+
+
 Stage commands
 ==============
 

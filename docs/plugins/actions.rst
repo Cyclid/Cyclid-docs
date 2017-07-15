@@ -132,6 +132,32 @@ workspace:
     "path" : "%{workspace}/Project"
   }
 
+
+sudo
+====
+
+===== =======================================================
+Name  Description
+===== =======================================================
+sudo  Run the command using ``sudo``
+===== =======================================================
+
+Run the command using ``sudo`` (if the remote user is not already ``root``).
+
+Example
+-------
+
+Run ``gem install`` to install a Gem system-wide, using ``sudo``:
+
+.. code::
+
+  {
+    "action" : "command",
+    "cmd" : "gem install bundler",
+    "sudo" : true
+  }
+
+
 .. _script-plugin:
 
 ******
@@ -240,6 +266,31 @@ Run the script from the ``Project`` directory in the workspace:
       "echo 'I am %{username} of %{organization}'"
     ]
   }
+
+sudo
+====
+
+===== =======================================================
+Name  Description
+===== =======================================================
+sudo  Run the script using ``sudo``
+===== =======================================================
+
+Run the script using ``sudo`` (if the remote user is not already ``root``).
+
+Example
+-------
+
+A simple script defined as a single string, running as ``root`` using ``sudo``:
+
+.. code:: json
+
+  {
+    "action" : "script",
+    "script" : "#!/bin/sh\necho 'hello from a simple script'\necho 'I am %{username} of %{organization}'",
+    "sudo" : true
+  }
+
 
 .. _log-plugin:
 
