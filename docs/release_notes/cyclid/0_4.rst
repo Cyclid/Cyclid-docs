@@ -1,0 +1,56 @@
+**********
+Cyclid 0.4
+**********
+
+.. contents::
+
+Upgrading
+=========
+
+Refer to the standard instructions for :ref:`upgrading <upgrading>` from a
+previous release of Cyclid.
+
+v0.4.0
+======
+
+Highlights
+----------
+
+Improved error handling of invalid job definitions, complete with on-the-fly
+linting and error reporting, and generally better internal error handling.
+
+Use of ``sudo`` has generally been cleaned up, and Transports will now only use
+``sudo`` when explitely requested. A new ``sudo`` flag has been added to Action
+plugins where it is useful.
+
+Plugins can now provide metadata about themselves and a new ``/plugins`` API
+endpoint allows clients to retrieve information about the available plugins.
+
+Changes
+-------
+
+- Add the ``#metadata``, ``#version``, ``#author``, ``#license`` &
+  ``#homepage`` methods to the Plugin base class, and implement an
+  appropriate ``#metadata`` method for all of the core plugins.
+- Add the ``/plugins`` API endpoint to return metadata about all of the
+  available plugins.
+- Modify the Transport#exec method to take additional arguments as a hash and
+  modify calling code to pass the ``path`` and ``sudo`` arguments in the hash,
+  as required.
+- In both the Docker & Github Transports only prepend commands with ``sudo`` if
+    a) The user is not already ``root``
+    b) The ``sudo`` flag has been specifically passed
+- Use the Linter (In Cyclid-core) to lint every job definition before creating
+  a new job, and reject any jobs which produce one or more errors (warnings are
+  ignored)
+- Significantly improve exception handling around job dispatch, and ensure that
+  we handle exceptions & return appropriate HTTP error messages or Github
+  statuses as required.
+- Fix a serious bug in the Google Builder where it would accidentally destroy
+  the first instance returned by the GCP API, rather than the intended named
+  instance.
+- Configure the Local Dispatcher & associated Sidekiq worker to use the
+  ``cyclid_jobs`` named Redis queue, rather than the ``default`` queue.
+- Add the current Thread ID to every log message, to make it easier to
+  trace/debug things like Sidekiq workers.
+
