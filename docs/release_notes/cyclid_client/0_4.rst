@@ -4,6 +4,17 @@ Cyclid Client 0.4
 
 .. contents::
 
+v0.4.1
+======
+
+Changes
+-------
+
+- Added the ``job lint`` and ``job format`` commands, which lint (verify) a job
+  and (re)format a job file, respectively.
+- Provide a helpful message if the user has not selected an organization with
+  ``org use`` but are attempting to run commands.
+
 v0.4.0
 ======
 
